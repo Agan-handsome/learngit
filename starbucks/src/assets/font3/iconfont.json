@@ -1,0 +1,44 @@
+{
+  "id": "3491448",
+  "name": "starbucks",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "77822",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "5121531",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "16336152",
+      "name": "银行账户",
+      "font_class": "zhanghu",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "21497147",
+      "name": "门店",
+      "font_class": "mendian",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "26302604",
+      "name": "咖啡",
+      "font_class": "kafei",
+      "unicode": "e75b",
+      "unicode_decimal": 59227
+    }
+  ]
+}
