@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Wrapper } from './style'
-import { getAds } from '@/api/request'
-import { getGoods } from '@/api/request'
-import { getCulture } from '@/api/request'
-
+import { connect } from 'react-redux'
+import { actionCreator } from './store'
 import Ads from './Ads'
 import Card from './Card'
 import Club from './Club'
@@ -11,23 +9,13 @@ import Goods from './Goods'
 import Culture from './Culture'
 import { func } from 'prop-types'
 
-const Home = () => {
-  const [ ads, setAds ] = useState([{img: ''},{img: ''}])
-  const [ goods, setGoods ] = useState([])
-  const [ culture, setCulture ] = useState([])
-
-  // console.log(culture, '-------------------')
-
+const Home = (props) => {
+  const { ads, goods, culture } = props
+  const { getAdsListDispatch, getGoodsListDispatch, getCultureListDispatch } = props
   useEffect(() => {
-    (async () => {
-      let { data: adsData } = await getAds()
-      let { data: goodsData } = await getGoods()
-      let { data: cultureData } = await getCulture()
-
-      setAds(adsData.ad)
-      setGoods(goodsData.goods)
-      setCulture(cultureData.culture)
-    })()
+    getAdsListDispatch()
+    getGoodsListDispatch()
+    getCultureListDispatch()
   }, [])
 
   return (
@@ -41,4 +29,25 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = (state) => {
+  return ({
+    ads: state.home.adsList,
+    goods: state.home.goodsList,
+    culture: state.home.cultureList
+  })
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAdsListDispatch() {
+      dispatch(actionCreator.getAdsList())
+    },
+    getGoodsListDispatch() {
+      dispatch(actionCreator.getGoodsList())
+    },
+    getCultureListDispatch() {
+      dispatch(actionCreator.getCultureList())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { AdsWrapper } from './style'
 import { Link } from 'react-router-dom'
 import Swiper from 'swiper'
+import { render } from 'react-dom'
 
 
 export default function Ads({ads}) {
@@ -27,20 +28,42 @@ export default function Ads({ads}) {
     },
    })
   }
- 
+  const render1 = () => {
+    let items = ads.slice(0, 1)
+      return items.map(item => {
+        return (
+          <Link 
+            to='/home'
+            key={item.id}
+          >
+            <img src={item.img} />
+          </Link>
+        )
+      }) 
+  }
+  const render2 = () => {
+    let items = ads.slice(1)
+    return items.map(item => {
+      return (
+        <Link 
+            to='/home'
+            key={item.id}
+          >
+            <img src={item.img} />
+          </Link>
+      )
+    })
+  }
+
   return (
     <AdsWrapper>
       <div className="btn-ads swiper-container">
         <div className="swiper-wrapper">
           <div className="swiper-slide">
-            <Link to="/home">
-              {<img src={ads[0].img} />}
-            </Link>
+            {render1()}
           </div>
           <div className="swiper-slide">
-            <Link to="/home">
-              {<img src={ads[1].img} />}
-            </Link>
+            {render2()}
           </div>
         </div>
         <div className="right-arrow">

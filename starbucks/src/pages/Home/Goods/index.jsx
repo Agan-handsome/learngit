@@ -2,7 +2,7 @@ import React from 'react'
 import {GoodsWrapper} from './style'
 import { Link } from 'react-router-dom'
 
-export default function Goods({goods = []}) {
+export default function Goods({goods}) {
 
     const renderGoodsList = () => {
         return goods.map(item => {

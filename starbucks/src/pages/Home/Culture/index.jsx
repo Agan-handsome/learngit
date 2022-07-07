@@ -2,7 +2,7 @@ import React from 'react'
 import {CultureWrapper} from './style'
 import { Link } from 'react-router-dom'
 
-export default function Culture({ culture = [{img: ''},{img: ''},{img: ''},{img: ''}] }) {
+export default function Culture({ culture }) {
 
     const renderCultureList = () => {
         return culture.map(item => {
